@@ -47,7 +47,6 @@ export class CounterComponent {
     console.log('Estado message=>', this.message);
 
     this.counterRef = window.setInterval(() => {
-      console.log('run time');
       this.counter.update(statePrev=> statePrev +1);
     },1000);
   }
