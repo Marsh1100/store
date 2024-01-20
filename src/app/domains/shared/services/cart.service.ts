@@ -17,6 +17,5 @@ export class CartService {
   addtoCart(product: IProduct)
   {
     this.cart.update(statePrev => [...statePrev,product])
-    console.log(this.cart());
   }
 }
