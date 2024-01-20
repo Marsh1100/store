@@ -61,7 +61,7 @@
   </nav>
 
   <div
-  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
+  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-85 h-screen p-4 overflow-y-auto transition-transform bg-white"
   [class.translate-x-full] = "hideSideMenu()"
 >
   <div class="flex justify-between items-center">
@@ -84,11 +84,49 @@
     </button>
   </div>
   <div>
-        @for (product of cart; track $index) {
-            <div>
-                <p>{{product.title}}</p>
-                <p>{{product.price}}</p>
-            </div>
-        }
+    <div class="relative overflow-x-auto">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-4 py-3">
+                    Product
+                </th>
+                  <th scope="col" class="px-6 py-3">
+                     Name
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Amount
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Subtotal
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+            @for(product of cart; track $index){
+              <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700">
+                  <td class="px-4 py-4">
+                    <img class="w-6 h-6" [src]="product.image" [alt]="product.title">
+                  </td>
+                  <td class="px-6 py-4">
+                    {{product.title}}
+                  </td>
+                  <td class="px-6 py-4">
+                    1
+                  </td>
+                  <td class="px-6 py-4">
+                    {{product.price | currency:'USD'}}
+                  </td>
+              </tr>  
+            } 
+              <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700">
+                <td class="px-4 py-4"></td>
+                <td class="px-4 py-4"></td>
+                <td class="px-4 py-4">TOTAL:</td>
+                <td class="px-4 py-4">{{total() | currency:'USD'}}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
   </div>
 </div>
