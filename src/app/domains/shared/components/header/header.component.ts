@@ -1,5 +1,4 @@
 import { Component, Input, SimpleChanges, inject, signal } from '@angular/core';
-import { IProduct } from '../../models/product.model';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 
