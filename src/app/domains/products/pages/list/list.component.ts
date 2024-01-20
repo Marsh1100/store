@@ -4,6 +4,7 @@ import { ProductComponent } from '../../components/product/product.component';
 import { IProduct } from '../../../shared/models/product.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -15,42 +16,20 @@ import { CartService } from '../../../shared/services/cart.service';
 export class ListComponent {
 
   private _serviceCart =  inject(CartService);
+  private _productsService = inject(ProductService);
   products = signal<IProduct[]>([]);
-  constructor()
-  {
-    const initProducts : IProduct[] =
-    [
-      {
-        id : Date.now(),
-        title: 'Pro 1',
-        price:100,
-        image : 'https://picsum.photos/640/640?r=22',
-        creationAt : new Date().toISOString(),
-      },
-      {
-        id : Date.now(),
-        title: 'Pro 3',
-        price:50,
-        image : 'https://picsum.photos/640/640?r=2',
-        creationAt : new Date().toISOString(),
-      },
-      {
-        id : Date.now(),
-        title: 'Pro 2',
-        price:189,
-        image : 'https://picsum.photos/640/640?r=20',
-        creationAt : new Date().toISOString(),
-      },
-      {
-        id : Date.now(),
-        title: 'Pro 3',
-        price:50,
-        image : 'https://picsum.photos/640/640?r=15',
-        creationAt : new Date().toISOString(),
-      }
-    ]
 
-    this.products.set(initProducts);
+  ngOnInit(){
+    this._productsService.getProducts().subscribe({
+      next : (products)=>
+      {
+        this.products.set(products)
+      },
+      error :()=>
+      {
+
+      }
+    });
   }
 
   addToCart(product: IProduct)
