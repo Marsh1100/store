@@ -1,15 +1,10 @@
-<div class="mx-10">
+<div class="px-10">
+    <h1 class="test-lg font-bold">About</h1>
+    <p class="text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae non sint obcaecati similique beatae, ab voluptatibus natus amet consequuntur voluptatem dolor quidem minus blanditiis eaque laborum laboriosam deleniti ad aperiam!</p>
 
-    <app-header/>
-    <div class="px-10">
-        <h1 class="test-lg font-bold">About</h1>
-        <p class="text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae non sint obcaecati similique beatae, ab voluptatibus natus amet consequuntur voluptatem dolor quidem minus blanditiis eaque laborum laboriosam deleniti ad aperiam!</p>
-
-        <p class="text-sm">Numero de clientes: <app-counter [message]="message()" [duration]="duration()"  *ngIf="duration()>0"/></p>
-        
-        <div>
-            <app-wave-audio audioUrl="assets/audio.mp3"/>
-        </div>
+    <p class="text-sm">Numero de clientes: <app-counter [message]="message()" [duration]="duration()"  *ngIf="duration()>0"/></p>
+    
+    <div>
+        <app-wave-audio audioUrl="assets/audio.mp3"/>
     </div>
 </div>
-
