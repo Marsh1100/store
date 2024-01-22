@@ -10,9 +10,11 @@ export class ProductService {
   url : string = 'https://api.escuelajs.co/api/v1/products';
   constructor() { }
 
-  getProducts()
+  getProducts(category_id?: string)
   {
-    return this.http.get<IProduct[]>(this.url);
+    const params = category_id ? `/?categoryId=${category_id}` : ''
+    console.log(`${this.url}${params}`);
+    return this.http.get<IProduct[]>(`${this.url}${params}`);
   }
 
   getProductById(id:number)
