@@ -9,7 +9,7 @@ import { ProductDetailComponent } from '@product/pages/product-detail/product-de
 export const routes: Routes = [
     {path:'', component: LayoutComponent, 
     children : [
-        {path:'', component: ListComponent},
+        {path:'', loadComponent: ()=> import('./domains/products/pages/list/list.component').then(m=> m.ListComponent)},
         {path:'about', component: AboutComponent},
         {path:'product/:id', component: ProductDetailComponent},
     ]},
